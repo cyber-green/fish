@@ -55,6 +55,14 @@ set -g fish_complete_case_insensitive 1
 # Enable autosuggestions from history
 set -g fish_autosuggestion_enabled 1
 
+
+set -Ux CHROME_EXECUTABLE /bin/chromium
+export CHROME_EXECUTABLE
+
+set -Ux ANDROID_HOME ~/Android/Sdk                                                                                        ⏱ {2.354}s 00:13:
+set -Ux ANDROID_SDK_ROOT ~/Android/Sdk
+set -Ux PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin $ANDROID_HOME/platform-tools
+
 # ===============================================
 # HISTORY SETTINGS
 # ===============================================
@@ -322,11 +330,11 @@ function fish_prompt
     set_color 00ffaf
     echo -n ")"
 
-    # Virtual env 
+     # Virtual env 
     if set -q VIRTUAL_ENV
         set_color ff5fff
-        echo -n " ("(basename $VIRTUAL_ENV)")"
-    end
+        echo -n "("(basename $VIRTUAL_ENV)")"
+    end   
 
     set_color 00ffaf
     echo -n "-["
@@ -334,6 +342,8 @@ function fish_prompt
     echo -n (prompt_pwd)
     set_color 00ffaf
     echo -n "]"
+
+
 
     # git branch with status
     if git rev-parse --git-dir >/dev/null 2>&1
@@ -415,3 +425,7 @@ end
 # Bind Ctrl+Shift+E to launch Emacs with current command line as filename
 # bind \e\[69\;6u launch_emacs
 # set -gx PATH /home/cg/.deno/bin $PATH
+
+if not contains /usr/bin $PATH
+    set -x PATH /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin $PATH
+end
