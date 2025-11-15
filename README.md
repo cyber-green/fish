@@ -45,7 +45,7 @@ nvim ~/.config/fish/config.fish
 ```
 
 
-### Custom Aliases
+### Custom Aliases Examples
 For Debian
 
 ```bash
