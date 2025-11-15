@@ -261,7 +261,6 @@ alias g_graph="git log --graph --pretty=format:'%C(auto)%h%d %s %C(blue)</%an>' 
 alias gb_graph="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(dim white)%an%C(reset) %C(bold yellow)%d%C(reset)%n''%C(white)%s%C(reset)' --date=short"
 
 # System monitoring
-alias htop="htop -C" # Colorized htop
 alias df="df -h" # Human readable disk usage
 alias du="du -h" # Human readable directory usage
 alias free="free -h" # Human readable memory usage
