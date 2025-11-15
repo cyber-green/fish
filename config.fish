@@ -400,32 +400,6 @@ function fish_title
 end
 # set -gx PATH ~/.config/emacs/bin $PATH
 
-# Key bindings
-# Ctrl+E to launch Emacs
-# bind \ce 'emacs &; commandline -f repaint'
-
-# Additional convenience bindings
-# Ctrl+Alt+E to launch Emacs in terminal mode
-# bind \e\ce 'emacs -nw; commandline -f repaint'
-
-# Function to launch Emacs with file if specified
-# function launch_emacs
-#     set -l current_line (commandline)
-#     if test -n "$current_line"
-#         # If there's text on command line, treat it as filename
-#         emacs $current_line &
-#         commandline ''
-#     else
-#         # Otherwise just launch Emacs
-#         emacs &
-#     end
-#     commandline -f repaint
-# end
-
-# Bind Ctrl+Shift+E to launch Emacs with current command line as filename
-# bind \e\[69\;6u launch_emacs
-# set -gx PATH /home/cg/.deno/bin $PATH
-
 if not contains /usr/bin $PATH
     set -x PATH /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin $PATH
 end
