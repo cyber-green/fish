@@ -1,5 +1,6 @@
 clear
-fastfetch
+# fastfetch 
+# nitchrevived 
 
 export HELIX_RUNTIME=$HOME/.config/helix/runtime
 # exports
@@ -76,7 +77,6 @@ set -g fish_save_timestamp 1
 # Vi mode (optional - uncomment if you prefer vi keybindings)
 # fish_vi_key_bindings
 
-# Default emacs mode keybindings (recommended for most users)
 fish_default_key_bindings
 
 # Enhanced navigation
@@ -185,7 +185,7 @@ set -gx PATH $HOME/.local/bin $PATH
 # Basic file operations
 alias ll="ls -la"
 alias la="ls -a"
-alias l="ll | cat --language asm "
+alias l="eza --long --header --git --icons --group-directories-first"
 alias cls="clear"
 alias c="clear"
 alias toc="touch"
@@ -195,13 +195,14 @@ alias mv="mv -i"
 alias rm="rm -i"
 alias cat="bat"
 alias dsk="dysk --all"
-alias cl="c ;; ll"
+alias cl="c ;; l"
 
 #play 
 alias playurl="~/.config/waybar/scripts/play-song.sh"
 
 # configs
 alias fconf="nv ~/.config/fish/config.fish"
+alias niri-config="nv ~/.config/niri/config.kdl"
 alias hyprconf="nv ~/.config/hypr/hyprland.conf"
 alias whconf="nv ~/.config/hypr/scripts/wallpaper_changer.sh"
 alias cdwm="nv ~/cg-dwm/config.h"
@@ -234,9 +235,6 @@ alias vqc="ffprobe -v error -select_streams v:0 -show_entries stream=width,heigh
 # Editor aliases
 alias nv="nvim"
 alias hx="helix"
-alias et="emacs -nw"
-alias em="~/.config/emacs/bin/doom run"
-alias doom="~/.config/emacs/bin/doom"
 alias v="vim"
 
 # poetry
@@ -284,8 +282,6 @@ alias chgrp="chgrp --preserve-root"
 # set wallpaper
 alias set-wallpaper="feh --bg-fill"
 
-alias pacman="sudo pacman"
-alias pacman="sudo pacman -S"
 
 alias sys-upgrade='sudo timeshift --create --comments "Before Upgrade" --tags D && sudo pacman -Syu'
 
@@ -316,18 +312,78 @@ set -g os_name (string replace 'NAME=' '' (grep '^NAME=' /etc/os-release) | stri
 # ===============================================
 
 # fish prompt (left prompt)
+# function fish_prompt
+#     set -l last_status $status
+#     set_color 00ffaf
+#     echo -n "╭──("
+#     set_color 00ff87
+#     echo -n "$USER"
+#     set_color 00ffaf
+#     echo -n "(🌿)"
+#     set_color 00ff87
+#     echo -n "$os_name"
+#     set_color 00ffaf
+#     echo -n ")"
+#
+#      # Virtual env 
+#     if set -q VIRTUAL_ENV
+#         set_color ff5fff
+#         echo -n "("(basename $VIRTUAL_ENV)")"
+#     end   
+#
+#     set_color 00ffaf
+#     echo -n "-["
+#     set_color 00ffaf
+#     echo -n (prompt_pwd)
+#     set_color 00ffaf
+#     echo -n "]"
+#
+#
+#
+#     # git branch with status
+#     if git rev-parse --git-dir >/dev/null 2>&1
+#         set -l git_branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
+#         set -l git_status (git status --porcelain 2>/dev/null)
+#         set_color ff87d7
+#         echo -n "  $git_branch"
+#
+#         # Show git status indicators
+#         if test -n "$git_status"
+#             set_color yellow
+#             echo -n "*"
+#         end
+#         set_color ff87d7
+#         echo -n ""
+#     end
+#
+#     # Show exit status if non-zero
+#     if test $last_status -ne 0
+#         set_color red
+#         echo -n " [$last_status]"
+#     end
+#
+#     echo
+#     set_color 00ffaf
+#     echo -n "╰─"
+#     set_color 00ffaf
+#     # echo -n " ❯❯ "
+# 	echo -n "\$ "
+#     set_color normal
+# end
+
+
 function fish_prompt
     set -l last_status $status
     set_color 00ffaf
-    echo -n "╭──("
+    echo -n ""
     set_color 00ff87
     echo -n "$USER"
     set_color 00ffaf
-    echo -n "(🌿)"
+    echo -n "@"
     set_color 00ff87
     echo -n "$os_name"
     set_color 00ffaf
-    echo -n ")"
+    echo -n ""
 
      # Virtual env 
     if set -q VIRTUAL_ENV
@@ -336,11 +392,11 @@ function fish_prompt
     end   
 
     set_color 00ffaf
-    echo -n "-["
+    echo -n " "
     set_color 00ffaf
     echo -n (prompt_pwd)
     set_color 00ffaf
-    echo -n "]"
+    echo -n " "
 
 
 
@@ -349,7 +405,7 @@ function fish_prompt
         set -l git_branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
         set -l git_status (git status --porcelain 2>/dev/null)
         set_color ff87d7
-        echo -n " ($git_branch"
+        echo -n "  $git_branch"
 
         # Show git status indicators
         if test -n "$git_status"
@@ -357,18 +413,18 @@ function fish_prompt
             echo -n "*"
         end
         set_color ff87d7
-        echo -n ")"
+        echo -n ""
     end
 
     # Show exit status if non-zero
     if test $last_status -ne 0
         set_color red
-        echo -n " [$last_status]"
+        echo -n " $last_status"
     end
 
     echo
     set_color 00ffaf
-    echo -n "╰─"
+    echo -n ""
     set_color 00ffaf
     # echo -n " ❯❯ "
 	echo -n "\$ "
@@ -397,7 +453,6 @@ end
 function fish_title
     echo (status current-command) " " (prompt_pwd)
 end
-# set -gx PATH ~/.config/emacs/bin $PATH
 
 if not contains /usr/bin $PATH
     set -x PATH /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin $PATH
