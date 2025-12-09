@@ -63,6 +63,7 @@ export CHROME_EXECUTABLE
 set -Ux ANDROID_HOME ~/Android/Sdk                                                                                        ⏱ {2.354}s 00:13:
 set -Ux ANDROID_SDK_ROOT ~/Android/Sdk
 set -Ux PATH $PATH $ANDROID_HOME/cmdline-tools/latest/bin $ANDROID_HOME/platform-tools
+set -Ux VIRTUAL_ENV_DISABLE_PROMPT 1
 
 # ===============================================
 # HISTORY SETTINGS
@@ -388,7 +389,7 @@ function fish_prompt
      # Virtual env 
     if set -q VIRTUAL_ENV
         set_color ff5fff
-        echo -n "("(basename $VIRTUAL_ENV)")"
+        echo -n " "(basename $VIRTUAL_ENV)""
     end   
 
     set_color 00ffaf
@@ -405,7 +406,7 @@ function fish_prompt
         set -l git_branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
         set -l git_status (git status --porcelain 2>/dev/null)
         set_color ff87d7
-        echo -n "  $git_branch"
+        echo -n " $git_branch"
 
         # Show git status indicators
         if test -n "$git_status"

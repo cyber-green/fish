@@ -1,8 +1,7 @@
 # **Cyber Green Fish Prompt** **(cg-fp)**
 A fresh, clean, and personalized `fish-shell` prompt
 
-![Cyber Green Fish Prompt](cg-fish.png)
-![Cyber Green Fish Prompt](cg-fish2.png)
+![Cyber Green Fish Prompt](fish-shell.png)
 
 ### Requarements
 - Any Linux distro (I personally use CachyOS)
