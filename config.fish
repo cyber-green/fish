@@ -237,6 +237,8 @@ alias vqc="ffprobe -v error -select_streams v:0 -show_entries stream=width,heigh
 alias nv="nvim"
 alias hx="helix"
 alias v="vim"
+alias doom="~/.config/emacs/bin/doom"
+alias dem="~/.config/emacs/bin/doom emacs"
 
 # poetry
 alias pv="v ~/Documents/poetry/poetry.md"
@@ -313,91 +315,32 @@ set -g os_name (string replace 'NAME=' '' (grep '^NAME=' /etc/os-release) | stri
 # ===============================================
 
 # fish prompt (left prompt)
-# function fish_prompt
-#     set -l last_status $status
-#     set_color 00ffaf
-#     echo -n "╭──("
-#     set_color 00ff87
-#     echo -n "$USER"
-#     set_color 00ffaf
-#     echo -n "(🌿)"
-#     set_color 00ff87
-#     echo -n "$os_name"
-#     set_color 00ffaf
-#     echo -n ")"
-#
-#      # Virtual env 
-#     if set -q VIRTUAL_ENV
-#         set_color ff5fff
-#         echo -n "("(basename $VIRTUAL_ENV)")"
-#     end   
-#
-#     set_color 00ffaf
-#     echo -n "-["
-#     set_color 00ffaf
-#     echo -n (prompt_pwd)
-#     set_color 00ffaf
-#     echo -n "]"
-#
-#
-#
-#     # git branch with status
-#     if git rev-parse --git-dir >/dev/null 2>&1
-#         set -l git_branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
-#         set -l git_status (git status --porcelain 2>/dev/null)
-#         set_color ff87d7
-#         echo -n "  $git_branch"
-#
-#         # Show git status indicators
-#         if test -n "$git_status"
-#             set_color yellow
-#             echo -n "*"
-#         end
-#         set_color ff87d7
-#         echo -n ""
-#     end
-#
-#     # Show exit status if non-zero
-#     if test $last_status -ne 0
-#         set_color red
-#         echo -n " [$last_status]"
-#     end
-#
-#     echo
-#     set_color 00ffaf
-#     echo -n "╰─"
-#     set_color 00ffaf
-#     # echo -n " ❯❯ "
-# 	echo -n "\$ "
-#     set_color normal
-# end
-
-
 function fish_prompt
     set -l last_status $status
     set_color 00ffaf
-    echo -n ""
+    echo -n "╭──("
     set_color 00ff87
     echo -n "$USER"
     set_color 00ffaf
-    echo -n "@"
+    # echo -n "(🌿)"
+    echo -n "[ ]"
     set_color 00ff87
     echo -n "$os_name"
     set_color 00ffaf
-    echo -n ""
+    echo -n ")"
 
      # Virtual env 
     if set -q VIRTUAL_ENV
-        set_color ff5fff
-        echo -n " "(basename $VIRTUAL_ENV)""
+		set_color 00ffaf
+        echo -n "-("(basename $VIRTUAL_ENV)")"
     end   
 
     set_color 00ffaf
-    echo -n " "
+    echo -n "-["
     set_color 00ffaf
     echo -n (prompt_pwd)
     set_color 00ffaf
-    echo -n " "
+    echo -n "]"
 
 
 
@@ -406,7 +349,7 @@ function fish_prompt
         set -l git_branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
         set -l git_status (git status --porcelain 2>/dev/null)
         set_color ff87d7
-        echo -n " $git_branch"
+        echo -n "  $git_branch"
 
         # Show git status indicators
         if test -n "$git_status"
@@ -420,17 +363,77 @@ function fish_prompt
     # Show exit status if non-zero
     if test $last_status -ne 0
         set_color red
-        echo -n " $last_status"
+        echo -n " [$last_status]"
     end
 
     echo
     set_color 00ffaf
-    echo -n ""
+    echo -n "╰─"
     set_color 00ffaf
     # echo -n " ❯❯ "
 	echo -n "\$ "
     set_color normal
 end
+
+
+# function fish_prompt
+#     set -l last_status $status
+#     set_color 00ffaf
+#     echo -n ""
+#     set_color 00ff87
+#     echo -n "$USER"
+# 	set_color 1793D1
+#     echo -n "   "
+#     set_color 00ff87
+#     echo -n "$os_name"
+#     set_color 00ffaf
+#     echo -n ""
+#
+#      # Virtual env 
+#     if set -q VIRTUAL_ENV
+#         set_color ff5fff
+#         echo -n " "(basename $VIRTUAL_ENV)""
+#     end   
+#
+#     set_color 00ffaf
+#     echo -n " "
+#     set_color 00ffaf
+#     echo -n (prompt_pwd)
+#     set_color 00ffaf
+#     echo -n " "
+#
+#
+#
+#     # git branch with status
+#     if git rev-parse --git-dir >/dev/null 2>&1
+#         set -l git_branch (git rev-parse --abbrev-ref HEAD 2>/dev/null)
+#         set -l git_status (git status --porcelain 2>/dev/null)
+#         set_color ff87d7
+#         echo -n " $git_branch"
+#
+#         # Show git status indicators
+#         if test -n "$git_status"
+#             set_color yellow
+#             echo -n "*"
+#         end
+#         set_color ff87d7
+#         echo -n ""
+#     end
+#
+#     # Show exit status if non-zero
+#     if test $last_status -ne 0
+#         set_color red
+#         echo -n " $last_status"
+#     end
+#
+#     echo
+#     set_color 00ffaf
+#     echo -n ""
+#     set_color 00ffaf
+#     # echo -n " ❯❯ "
+# 	echo -n "\$ "
+#     set_color normal
+# end
 
 # Right prompt with time and additional info
 function fish_right_prompt
