@@ -110,7 +110,7 @@ end
 # Smart cd that lists contents
 function cd --wraps=cd --description="cd with auto-ls"
     builtin cd $argv
-    and ls
+    and l
 end
 
 # Extract function for various archive formats
@@ -184,9 +184,8 @@ set -x GTK_THEME Adwaita:dark
 set -gx PATH $HOME/.local/bin $PATH
 
 # Basic file operations
-alias ll="ls -la"
-alias la="ls -a"
 alias l="eza --long --header --git --icons --group-directories-first"
+alias ls="ls -la | cat"
 alias cls="clear"
 alias c="clear"
 alias toc="touch"
@@ -321,7 +320,7 @@ function fish_prompt
     echo -n "╭──("
     set_color 00ff87
     echo -n "$USER"
-    set_color 00ffaf
+    set_color 00ff8f
     # echo -n "(🌿)"
     echo -n "[ ]"
     set_color 00ff87
