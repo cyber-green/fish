@@ -183,9 +183,12 @@ set -x GTK_THEME Adwaita:dark
 # Add ~/.local/bin to PATH
 set -gx PATH $HOME/.local/bin $PATH
 
+# source fish config
+alias sfc="source ~/.config/fish/config.fish"
+
 # Basic file operations
 alias l="eza --long --header --git --icons --group-directories-first"
-alias ls="ls -la | cat"
+alias ls="ls -a"
 alias cls="clear"
 alias c="clear"
 alias toc="touch"
@@ -196,6 +199,9 @@ alias rm="rm -i"
 alias cat="bat"
 alias dsk="dysk --all"
 alias cl="c ;; l"
+
+# yay
+alias yayf="yay -Slq | fzf --multi --preview 'yay -Sii {1}' --preview-window=down:75% | xargs -ro yay -S"
 
 #play 
 alias playurl="~/.config/waybar/scripts/play-song.sh"
