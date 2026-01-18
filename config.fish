@@ -1,5 +1,5 @@
 clear
-# fastfetch 
+fastfetch 
 # nitchrevived 
 
 export HELIX_RUNTIME=$HOME/.config/helix/runtime
@@ -214,6 +214,11 @@ alias whconf="nv ~/.config/hypr/scripts/wallpaper_changer.sh"
 alias cdwm="nv ~/cg-dwm/config.h"
 alias mdwm="cd ~/cg-dwm; sudo make clean install; cd -"
 
+
+alias jrnl="nv ~/jrnls/jrnl.daily.md"
+alias bjrnl="nv ~/jrnls/bjrnl.md"
+alias ht="nv ~/jrnls/ht.daily.md"
+
 # ada
 alias ada_init="~/.config/scripts/ada_init"
 
@@ -327,8 +332,8 @@ function fish_prompt
     set_color 00ff87
     echo -n "$USER"
     set_color 00ff8f
-    # echo -n "(🌿)"
-    echo -n "[ ]"
+	echo -n "{🌿}"
+	# echo -n "[ ]"
     set_color 00ff87
     echo -n "$os_name"
     set_color 00ffaf
