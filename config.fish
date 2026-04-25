@@ -1,5 +1,5 @@
 clear
-fastfetch 
+# fastfetch 
 # nitchrevived 
 
 export HELIX_RUNTIME=$HOME/.config/helix/runtime
@@ -189,7 +189,6 @@ alias sfc="source ~/.config/fish/config.fish"
 # Basic file operations
 alias l="eza --long --header --git --icons --group-directories-first"
 alias ls="ls -a"
-alias cls="clear"
 alias c="clear"
 alias toc="touch"
 alias md="mkdir -pv"
@@ -218,12 +217,6 @@ alias mdwm="cd ~/cg-dwm; sudo make clean install; cd -"
 alias jrnl="nv ~/jrnls/jrnl.daily.md"
 alias bjrnl="nv ~/jrnls/bjrnl.md"
 alias ht="nv ~/jrnls/ht.daily.md"
-
-# ada
-alias ada_init="~/.config/scripts/ada_init"
-
-# glow
-alias glow="~/programming/glow/glow"
 
 # Logout from i3
 alias logout="hyprctl dispatch exit"
@@ -258,9 +251,10 @@ alias ph="hx ~/Documents/poetry/poetry.md"
 # Git aliases
 alias g="git"
 alias ga="git add"
-alias gc="git commit"
+alias gc="git commit -m"
+alias gb="git branch"
 alias gp="git push"
-alias gl="git pull"
+alias gpl="git pull"
 alias gs="git status"
 alias gd="git diff"
 alias gco="git checkout"
@@ -298,6 +292,12 @@ alias set-wallpaper="feh --bg-fill"
 
 alias sys-upgrade='sudo timeshift --create --comments "Before Upgrade" --tags D && sudo pacman -Syu'
 
+# clean caches
+alias callc="~/.config/hypr/scripts/clean_arch.sh"
+
+# uptime
+alias uptime="uptime -p | bat -l asm"
+
 alias grep-rec="grep -Ri"
 
 # Search for a string in a single file (with line numbers)
@@ -332,7 +332,7 @@ function fish_prompt
     set_color 00ff87
     echo -n "$USER"
     set_color 00ff8f
-	echo -n "{🌿}"
+	echo -n "@"
 	# echo -n "[ ]"
     set_color 00ff87
     echo -n "$os_name"
@@ -471,3 +471,4 @@ end
 if not contains /usr/bin $PATH
     set -x PATH /usr/local/bin /usr/bin /bin /usr/local/sbin /usr/sbin /sbin $PATH
 end
+
